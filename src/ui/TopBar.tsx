@@ -27,9 +27,14 @@ const TopBar: React.FC = () => {
                     } else {
                         console.warn('ion-menu element not found');
                     }
-                }}>
+                }}
+                
+                className='flex items-center'>
 
                 <AppLogo />
+                <text className='font-bold ion-padding-start'>
+                    Donor Portal
+                </text>
             </div>
             {/* } */}
 

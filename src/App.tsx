@@ -59,9 +59,9 @@ import {
 import { IonReactRouter } from '@ionic/react-router';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
+import LoginWallDevPreview from './pages/LoginWallDevPreview';
 import ThemeSettings from './pages/ThemeSettings';
-import LoginForm from './pages/LoginForm';
+import LoginForm from './ui/LoginForm';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -137,8 +137,8 @@ const { isLoggedIn } = useAuth();
                 <Route exact path="/stories">
                   <StoriesPage />
                 </Route>
-                <Route exact path="/tab3">
-                  <Tab3 />
+                <Route exact path="/login-wall-preview">
+                  <LoginWallDevPreview />
                 </Route>
                 <Route exact path="/sponsorships">
                   <SponsorshipsPage />
@@ -214,7 +214,7 @@ function AppMenu() {
   const { logout } = useAuth();
   const { login } = useAuth();
 
-  const [showDevMode, setShowDevMode] = useState(false);
+  const [showDevMode, setShowDevMode] = useState(true);
 
   const toggleDevMode = () => {
     setShowDevMode(!showDevMode);
@@ -322,7 +322,7 @@ function AppMenu() {
           <IonItem
             detail={false}
             routerLink="/tab3"
-            routerDirection="none"
+            login-wall-preview="none"
             onClick={closeMenu}
           >
             <IonIcon icon={peopleOutline} />
@@ -362,9 +362,12 @@ function AppMenu() {
           
 
         <IonItem
-          style={{ marginTop: 50}}
+          style={{ marginTop: 24, borderTop: '0.5px solid gray' }}
           onClick={toggleDevMode}>
-          <IonLabel>Dev Mode</IonLabel>
+          <IonLabel>
+            
+          <IonBadge slot="start" color={'dark'}>Dev Mode</IonBadge>
+          </IonLabel>
           <IonToggle
             slot="end"
             checked={showDevMode}
@@ -381,7 +384,6 @@ function AppMenu() {
             >
               <IonIcon icon={colorPaletteOutline} />
               <IonLabel>UI Settings</IonLabel>
-              <IonBadge slot="end" color={'dark'}>Dev Mode</IonBadge>
             </IonItem>
 
             <IonItem
@@ -391,8 +393,17 @@ function AppMenu() {
               onClick={closeMenu}
             >
               <IonIcon icon={playCircleOutline} />
-              <IonLabel>Stories </IonLabel>
-              <IonBadge slot="end" color={'dark'}>Dev Mode</IonBadge>
+              <IonLabel>Stories Preview</IonLabel>
+            </IonItem>
+
+            <IonItem
+              detail={false}
+              routerLink="/login-wall-preview"
+              routerDirection="none"
+              onClick={closeMenu}
+            >
+              <IonIcon icon={link} />
+              <IonLabel>Gated Page</IonLabel>
             </IonItem>
           </div>
         )}

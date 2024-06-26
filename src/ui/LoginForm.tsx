@@ -3,7 +3,7 @@ import { useAuth } from '../GlobalProvider';
 
 import { useHistory } from 'react-router-dom';
 import { IonContent, IonButton, IonInput, IonLabel } from '@ionic/react';
-import AppLogo from '../ui/AppLogo';
+import AppLogo from './AppLogo';
 
 const LoginForm: React.FC = () => {
 
@@ -53,12 +53,12 @@ const LoginForm: React.FC = () => {
 
   return (
     // <IonPage>
-      <IonContent className="ion-padding ion-justify-content-center"
+      <div className="ion-padding ion-justify-content-center"
         // style={{ maxWidth: 360}}
         // style={{ maxWidth: 360, margin: 'auto' }}
         >
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-          <AppLogo />
+          <AppLogo size='xl'/>
           </div>
           <div
           style={{ marginTop: 30, display: 'flex', flexDirection: 'column', gap: 'var(--ion-padding)' }}
@@ -92,7 +92,7 @@ const LoginForm: React.FC = () => {
               Sign in with Microsoft Account
             </IonButton>
           </div>
-      </IonContent>
+      </div>
     // </IonPage>
   );
 };

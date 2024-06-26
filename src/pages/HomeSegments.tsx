@@ -18,6 +18,7 @@ import { EmblaOptionsType } from 'embla-carousel';
 import SignInModal from '../ui/SignInModal';
 import './../ui/Carousels.css';
 import { Space } from '../ui/Space';
+import LoginWall from '../ui/LoginWall';
 
 const OPTIONS: EmblaOptionsType = { align: 'start', dragFree: true };
 
@@ -55,13 +56,13 @@ const HomeSegments: React.FC<{ selectedSegment: string; setSelectedSegment: (val
             <div className="embla__container">
                 <div className="embla__slide">
                     {/* Updates Content */}
-                    <Space size='lg' />
-                    <div className='ion-padding flex flex-col gap-md' style={{maxWidth: '720px', margin: '0 auto' }}>
-                        
+                    <div className='ion-padding flex flex-col gap-md' style={{ maxWidth: '720px', margin: '0 auto' }}>
+                        {/* <Space size='sm' /> */}
+
                         <StoriesCarousel slides={[0, 1, 2, 3, 4, 5]} options={OPTIONS} />
-                        
+
                         <ContentCarousel carouselTitle='Emergency Appeals' slides={emergencyAppeal} options={OPTIONS} />
-          
+
                         {!isLoggedIn &&
                             <SignInModal>
                                 <div style={{ textAlign: 'center', padding: 'var(--ion-padding)', background: 'var(--ion-item-background)', borderRadius: 'var(--ion-radius)' }}>
@@ -94,26 +95,46 @@ const HomeSegments: React.FC<{ selectedSegment: string; setSelectedSegment: (val
                 </div>
                 <div className="embla__slide">
                     {/* Activities Content */}
-                    <div className='ion-padding' style={{maxWidth: '800px', margin: '0 auto' }}>
+                    <div className='ion-padding' style={{ maxWidth: '800px', margin: '0 auto' }}>
                         {isLoggedIn ?
                             <>
                                 <SkeletonList count={20} />
                                 <StoriesCarousel slides={[0, 1, 2, 3, 4, 5]} options={OPTIONS} />
                             </>
                             :
-                            <>
-                                <h2>Donations Timeline</h2>
-                                <p>Please sign in to see your donations timeline.</p>
-                                <SignInModal>
-                                    <IonButton expand="block" color="tertiary">Sign In</IonButton>
-                                </SignInModal>
-                                
+                            <div style={{ minHeight: '80vh', position: 'relative' }}>
 
-                                <div style={{ width: '100%', height: 300, background: 'grey', marginBottom: 20 }} />
-                                <div style={{ width: '100%', height: 300, background: 'blue', marginBottom: 20 }} />
-                                <div style={{ width: '100%', height: 300, background: 'yellow', marginBottom: 20 }} />
-                                <div style={{ width: '100%', height: 300, background: 'grey', marginBottom: 20 }} />
-                            </>
+                                <LoginWall>
+                                    <div id='mockup-content' style={{ position: 'relative', zIndex: 0 }} className='max-w-800 mx-auto flex flex-col gap'>
+
+                                        <h2 className="title text-center font-bold">Contributions</h2>
+                                        <p className="paragraph text-center">Login to see your contributions timeline</p>
+
+                                        <div className='flex flex-col gap-sm'>
+                                            {Array.from(Array(7).keys()).map((_, i) => (
+                                                <IonList lines="none" class="skeleton-text" key={i}>
+                                                    <IonListHeader>
+                                                        <IonLabel>
+                                                            <IonSkeletonText style={{ width: '20%' }} />
+                                                        </IonLabel>
+                                                    </IonListHeader>
+                                                    <IonItem>
+                                                        <IonThumbnail slot="start">
+                                                            <IonSkeletonText style={{ width: '100%' }} />
+                                                        </IonThumbnail>
+                                                        <IonLabel>
+                                                            <IonSkeletonText style={{ width: '30%' }} />
+                                                        </IonLabel>
+                                                        <IonLabel>
+                                                            <IonSkeletonText style={{ width: '20%' }} />
+                                                        </IonLabel>
+                                                    </IonItem>
+                                                </IonList>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </LoginWall>
+                            </div>
                         }
                     </div>
                 </div>
@@ -160,22 +181,22 @@ const SkeletonList: React.FC<{ count: number }> = ({ count }) => {
 
 const emergencyAppeal = [
     {
-        img: 'https://placehold.co/300x300?text=recovery',
+        img: 'https://images.pexels.com/photos/17727749/pexels-photo-17727749/free-photo-of-ancient-ruins-on-a-desert-in-yemen.jpeg?auto=compress&cs=tinysrgb&w=300',
         title: 'Yemen Recovery',
         description: 'Rebuilding Lives of people in need'
     },
     {
-        img: 'https://placehold.co/300x300?text=education',
+        img: 'https://images.pexels.com/photos/20987743/pexels-photo-20987743/free-photo-of-portrait-of-smiling-boy-in-shirt.jpeg?auto=compress&cs=tinysrgb&w=300',
         title: 'Education for All',
         description: 'Ensuring access to education for children'
     },
     {
-        img: 'https://placehold.co/300x300?text=clean',
+        img: 'https://images.pexels.com/photos/2837863/pexels-photo-2837863.jpeg?auto=compress&cs=tinysrgb&w=300',
         title: 'Clean Water Initiative',
         description: 'Providing clean water to communities'
     },
     {
-        img: 'https://placehold.co/300x300?text=health',
+        img: 'https://images.pexels.com/photos/26551119/pexels-photo-26551119/free-photo-of-father-hugging-smiling-sons.jpeg?auto=compress&cs=tinysrgb&w=300',
         title: 'Health and Wellness',
         description: 'Improving health facilities and wellness programs'
     }

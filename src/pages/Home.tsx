@@ -65,10 +65,10 @@ const Home: React.FC = () => {
                      slot=''
                     value={selectedSegment} onIonChange={(e) => setSelectedSegment(e.detail.value! as string)}>
                     <IonSegmentButton value="updates">
-                        <IonLabel>MH Updates</IonLabel>
+                        <IonLabel>Updates</IonLabel>
                     </IonSegmentButton>
                     <IonSegmentButton value="activities">
-                        <IonLabel>Your Activities</IonLabel>
+                        <IonLabel>My Contributions</IonLabel>
                     </IonSegmentButton>
                 </IonSegment>
         </IonToolbar>
@@ -195,35 +195,3 @@ const SkeletonListItem: React.FC = () => (
     </IonItem>
   </IonList>
 );
-
-const SkeletonList: React.FC<{ count: number }> = ({ count }) => {
-  const items = Array.from({ length: count }, (_, index) => (
-    <SkeletonListItem key={index} />
-  ));
-
-  return <>{items}</>;
-};
-
-
-const emergencyAppeal = [
-  {
-      img: 'https://placehold.co/300x300?text=recovery',
-      title: 'Yemen Recovery',
-      description: 'Rebuilding Lives of people in need'
-  },
-  {
-      img: 'https://placehold.co/300x300?text=education',
-      title: 'Education for All',
-      description: 'Ensuring access to education for children'
-  },
-  {
-      img: 'https://placehold.co/300x300?text=clean',
-      title: 'Clean Water Initiative',
-      description: 'Providing clean water to communities'
-  },
-  {
-      img: 'https://placehold.co/300x300?text=health',
-      title: 'Health and Wellness',
-      description: 'Improving health facilities and wellness programs'
-  }
-];

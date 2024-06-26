@@ -3,7 +3,7 @@ import ExploreContainer from '../components/ExploreContainer';
 import './Tab2.css';
 
 import { useAuth } from './../GlobalProvider';
-import LoginForm from './LoginForm';
+import LoginForm from '../ui/LoginForm';
 
 const Tab2: React.FC = () => {
 

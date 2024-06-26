@@ -62,7 +62,7 @@ const ContentCarousel: React.FC<PropType> = (props) => {
     }, []);
 
     return (
-        <section className="thumb-carousel" 
+        <section className="thumb-carousel shadow-xl" 
             style={{
                 margin: 'auto',
                 background: 'var(--ion-item-background)',

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { IonButton, IonModal } from '@ionic/react';
-import LoginForm from '../pages/LoginForm';
+import LoginForm from './LoginForm';
 
 interface SignInModalProps {
   children: React.ReactNode;

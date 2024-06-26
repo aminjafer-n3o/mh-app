@@ -54,7 +54,7 @@ const StoriesCarousel: React.FC<PropType> = (props) => {
     }, []);
 
     return (
-        <section className="story-carousel"
+        <section className="story-carousel shadow-lg"
             style={{ 
                 // margin: 'auto',
                 background: 'var(--ion-item-background)',

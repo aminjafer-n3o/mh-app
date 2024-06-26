@@ -27,6 +27,7 @@ import type { ToggleCustomEvent } from '@ionic/react';
 import { personCircle, personCircleOutline, sunny, sunnyOutline } from 'ionicons/icons';
 
 import './ThemeSettings.css';
+const isDesktop = window.innerWidth >= 768;
 
 function ThemeSettings() {
     const [paletteToggle, setPaletteToggle] = useState(false);
@@ -34,6 +35,11 @@ function ThemeSettings() {
     // Listen for the toggle check/uncheck to toggle the dark palette
     const toggleChange = (ev: ToggleCustomEvent) => {
         toggleDarkPalette(ev.detail.checked);
+    };
+    
+    // Add or remove the "--ion-box-shadow-color" css variable and set it to unset
+    const toggleShadow = (shouldAdd: boolean) => {
+        document.documentElement.style.setProperty('--ion-box-shadow-color', shouldAdd ? 'rgba(0, 0, 0, 0.1)' : 'unset');
     };
 
     // Add or remove the "ion-palette-dark" class on the html element
@@ -75,6 +81,7 @@ function ThemeSettings() {
     const [padding, setPadding] = useState(20);
     const [borderRadius, setBorderRadius] = useState(8);
     const [isDarkMode, setIsDarkMode] = useState(false);
+    const [hasShadow, setHasShadow] = useState(true);
 
     const updatePrimaryColor = (color: string) => {
         setPrimaryColor(color);
@@ -154,122 +161,132 @@ function ThemeSettings() {
             </IonHeader>
 
             <IonContent>
-                <IonListHeader>Appearance</IonListHeader>
-                <IonList inset={true}>
-                    <IonItem>
-                        <IonToggle checked={paletteToggle} onIonChange={toggleChange} justify="space-between">
-                            Dark Mode
-                        </IonToggle>
-                    </IonItem>
-                    <IonItem>
-                        <IonLabel >Primary Color</IonLabel>
-                        <IonLabel slot="end">
-                            <input
-                                style={{ width: 80, border: 0, padding: 0 }}
-                                type="color" value={primaryColor} onChange={(e) => updatePrimaryColor(e.target.value)} />
-                        </IonLabel>
-                    </IonItem>
-                    <IonItem>
-                        <IonLabel >Secondary Color</IonLabel>
-                        <IonLabel slot="end">
-                            <input
-                                style={{ width: 80, border: 0, padding: 0 }}
-                                type="color" value={secondaryColor} onChange={(e) => updateSecondaryColor(e.target.value)} />
-                        </IonLabel>
-                    </IonItem>
-                    <IonItem>
-                        <IonLabel >Tertiary Color</IonLabel>
-                        <IonLabel slot="end">
-                            <input
-                                style={{ width: 80, border: 0, padding: 0 }}
-                                type="color" value={tertiaryColor} onChange={(e) => updateTertiaryColor(e.target.value)} />
-                        </IonLabel>
-                    </IonItem>
-                    <IonItem>
-                        <IonSelect label="Font"
-                            placeholder="Select Font"
-                            // interface="action-sheet"
-                            interface="popover"
-                            onIonChange={(e) => updateFontFamily(e.detail.value)}
-                        >
-                            <IonSelectOption value="'Inter', sans-serif">Inter</IonSelectOption>
-                            <IonSelectOption value="'Poppins', sans-serif">Poppins</IonSelectOption>
-                            <IonSelectOption value="'Signika', sans-serif">Signika</IonSelectOption>
-                            <IonSelectOption value="">System Default</IonSelectOption>
-                        </IonSelect>
-                    </IonItem>
+                <div style={{maxWidth: '600px', margin: '0 auto' }}>
+                    <IonListHeader>Appearance</IonListHeader>
+                    <IonList inset={true}>
+                        <IonItem>
+                            <IonToggle checked={paletteToggle} onIonChange={toggleChange} justify="space-between">
+                                Dark Mode
+                            </IonToggle>
+                        </IonItem>
+                        <IonItem>
+                            <IonLabel >Primary Color</IonLabel>
+                            <IonLabel slot="end">
+                                <input
+                                    style={{ width: 80, border: 0, padding: 0 }}
+                                    type="color" value={primaryColor} onChange={(e) => updatePrimaryColor(e.target.value)} />
+                            </IonLabel>
+                        </IonItem>
+                        <IonItem>
+                            <IonLabel >Secondary Color</IonLabel>
+                            <IonLabel slot="end">
+                                <input
+                                    style={{ width: 80, border: 0, padding: 0 }}
+                                    type="color" value={secondaryColor} onChange={(e) => updateSecondaryColor(e.target.value)} />
+                            </IonLabel>
+                        </IonItem>
+                        <IonItem>
+                            <IonLabel >Tertiary Color</IonLabel>
+                            <IonLabel slot="end">
+                                <input
+                                    style={{ width: 80, border: 0, padding: 0 }}
+                                    type="color" value={tertiaryColor} onChange={(e) => updateTertiaryColor(e.target.value)} />
+                            </IonLabel>
+                        </IonItem>
+                        <IonItem>
+                            <IonSelect label="Font"
+                                placeholder="Select Font"
+                                // interface="action-sheet"
+                                interface="popover"
+                                onIonChange={(e) => updateFontFamily(e.detail.value)}
+                            >
+                                <IonSelectOption value="'Inter', sans-serif">Inter</IonSelectOption>
+                                <IonSelectOption value="'Poppins', sans-serif">Poppins</IonSelectOption>
+                                <IonSelectOption value="'Signika', sans-serif">Signika</IonSelectOption>
+                                <IonSelectOption value="">System Default</IonSelectOption>
+                            </IonSelect>
+                        </IonItem>
 
 
-                </IonList>
-
-
-
-                {/* <IonList inset={true}>
-                    <IonItem button={true}>Text Size</IonItem>
-                    <IonItem>
-                        <IonToggle justify="space-between">Bold Text</IonToggle>
-                    </IonItem>
-                </IonList> */}
+                    </IonList>
 
 
 
-                <IonListHeader>Look and feel</IonListHeader>
-                <IonList inset={true}>
-                    <IonItem>
-                        <IonLabel slot="start">Spacing</IonLabel>
-                        <IonRange
-                            slot='end'
-                            min={2}
-                            max={24}
-                            step={1}
-                            value={padding}
-                            onIonInput={(e) => updatePadding(e.detail.value as number)}
-                        />
-
-                    </IonItem>
-                    <IonItem>
-                        <IonLabel slot="start">Roundedness</IonLabel>
-                        <IonRange
-                            slot='end'
-                            min={0}
-                            max={32}
-                            step={1}
-                            value={borderRadius}
-                            onIonInput={(e) => updateBorderRadius(e.detail.value as number)}
-                        />
-                    </IonItem>
-                </IonList>
+                    {/* <IonList inset={true}>
+                        <IonItem button={true}>Text Size</IonItem>
+                        <IonItem>
+                            <IonToggle justify="space-between">Bold Text</IonToggle>
+                        </IonItem>
+                    </IonList> */}
 
 
 
-                <IonListHeader>Preview</IonListHeader>
-                <IonList inset={true}>
+                    <IonListHeader>Look and feel</IonListHeader>
+                    <IonList inset={true}>
+                        <IonItem>
+                            <IonLabel slot="start">Spacing</IonLabel>
+                            <IonRange
+                                slot='end'
+                                min={2}
+                                max={24}
+                                step={1}
+                                value={padding}
+                                onIonInput={(e) => updatePadding(e.detail.value as number)}
+                            />
 
-                    <IonItem >
-                        <IonThumbnail slot="start">
-                            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-                        </IonThumbnail>
-                        <IonLabel>Item Thumbnail</IonLabel>
-                    </IonItem>
-                    <IonItem className=''>
-                        <IonButton fill="outline">Outline</IonButton>
-                        <IonButton fill="solid">Solid</IonButton>
-                        <IonButton disabled={true}>Inactive</IonButton>
-                        <IonButton fill="clear">Clear</IonButton>
-                    </IonItem>
-                    <IonItem className=''>
-                        <IonButton color={'secondary'} fill="outline">Outline</IonButton>
-                        <IonButton color={'secondary'} fill="solid">Solid</IonButton>
-                        <IonButton color={'secondary'} disabled={true}>Inactive</IonButton>
-                        <IonButton color={'secondary'} fill="clear">Clear</IonButton>
-                    </IonItem>
-                    <IonItem className=''>
-                        <IonButton color={'tertiary'} fill="outline">Outline</IonButton>
-                        <IonButton color={'tertiary'} fill="solid">Solid</IonButton>
-                        <IonButton color={'tertiary'} disabled={true}>Inactive</IonButton>
-                        <IonButton color={'tertiary'} fill="clear">Clear</IonButton>
-                    </IonItem>
-                </IonList>
+                        </IonItem>
+                        <IonItem>
+                            <IonLabel slot="start">Roundedness</IonLabel>
+                            <IonRange
+                                slot='end'
+                                min={0}
+                                max={32}
+                                step={1}
+                                value={borderRadius}
+                                onIonInput={(e) => updateBorderRadius(e.detail.value as number)}
+                            />
+                        </IonItem>
+                        <IonItem>
+                            <IonLabel slot="start">Shadow (Elevated UI)</IonLabel>
+                            <IonToggle
+                                slot='end'
+                                checked={hasShadow}
+                                onIonChange={(e) => toggleShadow(e.detail.checked)}
+                            />
+                        </IonItem>
+                    </IonList>
+
+
+
+                    <IonListHeader>Preview</IonListHeader>
+                    <IonList inset={true} className='shadow-xl flex flex-col gap'>
+
+                        <IonItem >
+                            <IonThumbnail slot="start">
+                                <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+                            </IonThumbnail>
+                            <IonLabel>Item Thumbnail</IonLabel>
+                        </IonItem>
+                        <IonItem className=''>
+                            <IonButton fill="outline">Outline</IonButton>
+                            <IonButton fill="solid">Solid</IonButton>
+                            <IonButton disabled={true}>Inactive</IonButton>
+                            <IonButton fill="clear">Clear</IonButton>
+                        </IonItem>
+                        <IonItem className=''>
+                            <IonButton color={'secondary'} fill="outline">Outline</IonButton>
+                            <IonButton color={'secondary'} fill="solid">Solid</IonButton>
+                            <IonButton color={'secondary'} disabled={true}>Inactive</IonButton>
+                            <IonButton color={'secondary'} fill="clear">Clear</IonButton>
+                        </IonItem>
+                        <IonItem className=''>
+                            <IonButton color={'tertiary'} fill="outline">Outline</IonButton>
+                            <IonButton color={'tertiary'} fill="solid">Solid</IonButton>
+                            <IonButton color={'tertiary'} disabled={true}>Inactive</IonButton>
+                            <IonButton color={'tertiary'} fill="clear">Clear</IonButton>
+                        </IonItem>
+                    </IonList>
+                </div>
 
             </IonContent>
         </IonPage>
