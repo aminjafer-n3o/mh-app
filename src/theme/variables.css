@@ -1,0 +1,129 @@
+/* For information on how to create your own theme, please see:
+http://ionicframework.com/docs/theming/ */
+
+:root {
+    /* This should be controllable from the app */
+    --ion-padding: 16px;
+    /* Primary */
+    /* --ion-color-primary: rgb(var(--ion-color-primary-rgb, 56, 128, 255));
+    --ion-color-primary-rgb: 56, 128, 255;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255, 255, 255;
+    --ion-color-primary-shade: rgb(calc(var(--ion-color-primary-rgb-r) * 0.9), calc(var(--ion-color-primary-rgb-g) * 0.9), calc(var(--ion-color-primary-rgb-b) * 0.9));
+    --ion-color-primary-tint: rgb(calc(var(--ion-color-primary-rgb-r) * 1.1), calc(var(--ion-color-primary-rgb-g) * 1.1), calc(var(--ion-color-primary-rgb-b) * 1.1)); */
+
+    /** secondary **/
+    /* --ion-color-secondary: rgb(var(--ion-color-secondary-rgb, 61, 194, 255));
+    --ion-color-secondary-rgb: 61, 194, 255;
+    --ion-color-secondary-contrast: #ffffff;
+    --ion-color-secondary-contrast-rgb: 255, 255, 255;
+    --ion-color-secondary-shade: rgb(calc(var(--ion-color-secondary-rgb-r) * 0.9), calc(var(--ion-color-secondary-rgb-g) * 0.9), calc(var(--ion-color-secondary-rgb-b) * 0.9));
+    --ion-color-secondary-tint: rgb(calc(var(--ion-color-secondary-rgb-r) * 1.1), calc(var(--ion-color-secondary-rgb-g) * 1.1), calc(var(--ion-color-secondary-rgb-b) * 1.1)); */
+
+    /** tertiary **/
+    /* --ion-color-tertiary: rgb(var(--ion-color-tertiary-rgb, 250, 191, 23));
+    --ion-color-tertiary-rgb: 250, 191, 23;
+    --ion-color-tertiary-contrast: #ffffff;
+    --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+    --ion-color-tertiary-shade: rgb(calc(var(--ion-color-tertiary-rgb-r) * 0.9), calc(var(--ion-color-tertiary-rgb-g) * 0.9), calc(var(--ion-color-tertiary-rgb-b) * 0.9));
+    --ion-color-tertiary-tint: rgb(calc(var(--ion-color-tertiary-rgb-r) * 1.1), calc(var(--ion-color-tertiary-rgb-g) * 1.1), calc(var(--ion-color-tertiary-rgb-b) * 1.1)); */
+
+    
+
+    --ion-color-primary: #1abbdd;
+	--ion-color-primary-rgb: 26,187,221;
+	--ion-color-primary-contrast: #000000;
+	--ion-color-primary-contrast-rgb: 0,0,0;
+	--ion-color-primary-shade: #17a5c2;
+	--ion-color-primary-tint: #31c2e0;
+
+	--ion-color-secondary: #007089;
+	--ion-color-secondary-rgb: 0,112,137;
+	--ion-color-secondary-contrast: #ffffff;
+	--ion-color-secondary-contrast-rgb: 255,255,255;
+	--ion-color-secondary-shade: #006379;
+	--ion-color-secondary-tint: #1a7e95;
+
+	--ion-color-tertiary: #fabf17;
+	--ion-color-tertiary-rgb: 250,191,23;
+	--ion-color-tertiary-contrast: #000000;
+	--ion-color-tertiary-contrast-rgb: 0,0,0;
+	--ion-color-tertiary-shade: #dca814;
+	--ion-color-tertiary-tint: #fbc52e;
+
+    
+    /* Global border radius variable */
+    --ion-radius: 8px;
+    
+    /* Global background color variable */
+    --ion-background-color: var(--ion-background-color-step-50, #f2f2f6);
+    --ion-toolbar-background: var(--ion-background-color);
+    --ion-item-background:: var(--ion-background-color);
+
+}
+
+ion-button {
+    
+    /* --padding-start: calc(var(--ion-padding, 10px) * 1.2) !important;;
+      --padding-end: calc(var(--ion-padding, 10px) * 1.2) !important;; */
+    /* --padding-top: calc(var(--ion-padding, 20px));
+      --padding-bottom: calc(var(--ion-padding, 20px)); */
+    --padding-start: var(--ion-padding, 20px);
+    --padding-end: var(--ion-padding, 20px);
+    --padding-top: calc(var(--ion-padding, 10px) * 0.8) !important;
+    --padding-bottom: calc(var(--ion-padding, 10px) * 0.8) !important;
+
+    --border-radius: var(--ion-radius, 8px) !important;
+
+    /* --border-radius: var(--border-radius, 8px) !important; */
+
+    /* --border-radius: 24px;  */
+    /* --border-radius: var(--border-radius, 8px); /* Use the global border radius variable */
+}
+ion-button#mh-yellow-button{
+    --color: black;
+    --background: #fbbd31;
+    --background-hover: #fab414;
+    --background-activated: #fab414;
+    --background-focused: #fab414;
+}
+
+ion-thumbnail {
+    /* --size: 140px; */
+    --border-radius: var(--ion-radius, 8px) !important;
+}
+
+
+
+/* Themer Demo */
+
+/* This sets a different item border color for the default theme on ios and md */
+:root {
+    --ion-item-border-color: var(--ion-background-color-step-200);
+    --ion-toolbar-background: var(--ion-background-color);
+    --ion-item-background: #fff;
+}
+
+/* This sets a different background and item background for the default theme on ios */
+:root.ios {
+    /* --ion-background-color: #f1f0ee; */
+    /* --ion-background-color: #f3f0eb; */
+    --ion-background-color: var(--ion-background-color-step-50, #f2f2f6);
+    --ion-toolbar-background: var(--ion-background-color);
+    --ion-item-background: #fff;
+}
+
+/* This sets a different background and item background for the default theme on md */
+:root.md {
+    /* --ion-background-color: #f1f0ee; */
+    /* --ion-background-color: #f3f0eb; */
+    --ion-background-color: var(--ion-background-color-step-100, #f9f9f9);
+    --ion-toolbar-background: var(--ion-background-color);
+    --ion-item-background: #fff;
+}
+
+/* This sets a different item background when dark mode is enabled on ios and md */
+.ion-palette-dark.ios,
+.ion-palette-dark.md {
+    --ion-item-background: #1c1c1d;
+}

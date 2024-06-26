@@ -1,0 +1,85 @@
+
+  /* Embla */
+  .thumb-carousel,
+  .story-carousel {
+    --slide-spacing: calc(var(--ion-padding)*.6);
+    }
+  .story-carousel {
+    /* --story-carousel-slide-size: 28%; */
+    --story-carousel-slide-size: 80px;
+    /* height: 172px; */
+    height: calc(80 + var(--slide-spacing));
+  }
+  .story-carousel__thumbnail{
+    height: 72px;
+    width: 80px;
+  }
+  @media only screen and (min-width: 768px) {
+    /* story carousel on desktop*/
+    .story-carousel {
+      --story-carousel-slide-size: 160px;
+      height: calc(160 + var(--slide-spacing));
+    }
+    .story-carousel__thumbnail{
+      height: 160px;
+    }
+  }
+  .thumb-carousel {
+    --thumb-carousel-slide-size: 48%;
+  }
+
+  .thumb-carousel__viewport,
+  .story-carousel__viewport {
+    overflow: hidden;
+  }
+
+  .thumb-carousel__container,
+  .story-carousel__container {
+    backface-visibility: hidden;
+    display: flex;
+    touch-action: pan-y pinch-zoom;
+    margin-left: calc(var(--slide-spacing) * -1);
+  }
+
+  .thumb-carousel__slide{
+    flex: 0 0 var(--thumb-carousel-slide-size);
+    min-width: 0;
+    padding-left: var(--slide-spacing);
+  }
+  .story-carousel__slide {
+    flex: 0 0 var(--story-carousel-slide-size);
+    min-width: 0;
+    padding-left: var(--slide-spacing);
+  }
+
+
+/* for desktop cursor */
+
+.grabbable {
+    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+
+ /* (Optional) Apply a "closed-hand" cursor during drag operation. */
+.grabbable:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+
+
+/* for HomeSegments */
+
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+  align-items: flex-start; /* Add this */
+}
+.embla__slide {
+  height: auto;
+  min-width: 100%;
+}
