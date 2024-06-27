@@ -62,7 +62,7 @@ const StoriesCarousel: React.FC<PropType> = (props) => {
             }}
         >
             <div className='flex justify-between items-center ion-padding-start'>
-                <h2>Latest Stories</h2>
+                <h2 className='font-semibold'>Latest Stories</h2>
                 <IonButton fill='clear' slot='end' id={`popover-button-${uniqueId}`}>
                     <IonIcon slot="icon-only" color='dark' icon={ellipsisHorizontal} style={{ height: 24, width: 24 }} />                    
                 </IonButton>

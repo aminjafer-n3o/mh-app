@@ -70,7 +70,7 @@ const ContentCarousel: React.FC<PropType> = (props) => {
             }}
         >
             <div className='flex justify-between items-center ion-padding-start'>
-                {carouselTitle && <h2>{carouselTitle}</h2>}
+                {carouselTitle && <h2 className='font-semibold'>{carouselTitle}</h2>}
                 <IonButton fill='clear' slot='end' id={`popover-button-${uniqueId}`}>
                     <IonIcon slot="icon-only" color='dark' icon={ellipsisHorizontal} style={{ height: 24, width: 24 }} />                    
                 </IonButton>
