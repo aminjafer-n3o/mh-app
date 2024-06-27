@@ -2,10 +2,10 @@
 
 :root {
   /* controlled by the app UI Settings: */
-  --app-font-family: 'Plus Jakarta Sans', sans-serif;
+  /* --app-font-family: 'Plus Jakarta Sans', sans-serif; */
   /* --app-font-family: 'Poppins', sans-serif; */
   /* --app-font-family: 'Inter', sans-serif; */
-  /* --app-font-family: 'Signika', sans-serif; */
+  --app-font-family: 'Signika', sans-serif;
   /* --app-font-family: 'DM Sans', sans-serif; */
   /* --app-font-family: system-ui; */
 }
