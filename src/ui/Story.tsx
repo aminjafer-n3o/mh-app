@@ -1,103 +1,80 @@
 import React, { useState, useRef } from 'react';
 import Stories from 'react-insta-stories';
-import '../ui/Story.css'
+// import './Story.css'
 
-import { IonContent, IonButton, IonModal, IonPage, IonIcon, IonLabel } from '@ionic/react';
+import { IonContent, IonButton, IonModal, IonIcon, IonLabel } from '@ionic/react';
 
 import {
   arrowForwardCircleOutline,
   close
 } from 'ionicons/icons';
+import { Space } from './Space';
 
-const StoriesPage: React.FC = () => {
-
-  const modal = useRef<HTMLIonModalElement>(null);
-
-  // const modalCTA = useRef<HTMLIonModalElement>(null);
-
-  // const [presentingElement, setPresentingElement] = useState<HTMLElement | null>(null);
-
+const Story: React.FC = () => {
 
   return (
-    <IonPage>
-      <IonContent fullscreen>
-
-        {/* <IonButton
-          style={{ margin: 'auto', marginTop: 200, maxWidth: 200 }}
-          className="ion-padding" id="open-modal" expand="block">
-          Show Stories
-        </IonButton> */}
-
-        <IonModal
-          id="stories-modal"
-          ref={modal} trigger="open-modal"
-          // presentingElement={presentingElement!}
-          canDismiss={true}
-        >
-          <IonButton
-            size='large'
-            style={{ position: 'absolute', zIndex: 9999, right: 0, color: 'white' }}
-            fill="clear" onClick={() => modal.current?.dismiss()}>
-            <IonIcon slot="icon-only" ios={close} md={close}></IonIcon>
-          </IonButton>
-          <Stories
-            loop
-            // isPaused={true}
-            keyboardNavigation
-            defaultInterval={5000}
-            // @ts-ignore
-            stories={stories2}
-            width={'100%'}
-            height={'100%'}
-          />
-        </IonModal>
-
-
-        <div style={{ height: '40px' }}></div>
         <div 
-        style={{ maxWidth: '400px', height: '100%', margin: 'auto' }}
-        className="stories ">
+        style={{ 
+            maxWidth: '100%',
+            border: '1px solid gray',
+            borderRadius: 'var(--ion-radius)',
+            // borderRadius: `calc(var(--ion-radius) + ${Math.round(parseInt(getComputedStyle(document.documentElement).getPropertyValue('--ion-padding')))}px)`,
+        }}
+        className="ion-padding">
+          <h2 className='font-bold ion-text-center'>Latest Update</h2>
           <Stories
             loop
-            // isPaused={true}
+            isPaused={true}
             keyboardNavigation
             defaultInterval={8000}
             // @ts-ignore
             stories={stories2}
             width={'100%'}
-            height={'90vh'}
-            // maxHeight={'640px'}
+            height={'65vh'}
+            maxHeight={'600px'}
+            storyInnerContainerStyles={{
+                borderRadius: 'calc(var(--ion-radius)*0.8)',
+            }}
+            storyContainerStyles={{
+                background: 'none'
+            }}
+            progressContainerStyles={{
+                position: 'absolute',
+                bottom: `calc(var(--ion-padding) * -1.6)`,
+                filter: 'invert(100%)',
+            }}
+            progressStyles={{
+                // height: 4,
+            }}
           />
+          <Space size="lg" />
         </div>
-
-      </IonContent>
-    </IonPage>
   );
 };
 
-export default StoriesPage;
+export default Story;
 
 //@ts-ignore
-const Story2 = ({ isPaused }) => {
-  return (
-    <div
-      style={{ ...contentStyle, background: 'Aquamarine', color: '#16161d' }}
-    >
-      <h1>You get the control of the story.</h1>
-      <p>
-        Render your custom JSX by passing just a{' '}
-        <code style={{ fontStyle: 'italic' }}>content</code> property inside
-        your story object.
-      </p>
-      <p>
-        You get a <code style={{ fontStyle: 'italic' }}>action</code> prop as an
-        input to your content function, that can be used to play or pause the
-        story.
-      </p>
-      <h1>{isPaused ? 'Paused' : 'Playing'}</h1>
-    </div>
-  );
-};
+// const Story2 = ({ isPaused }) => {
+//   return (
+//     <div
+//       style={{ ...contentStyle, background: 'Aquamarine', color: '#16161d' }}
+//     >
+//       <h1>You get the control of the story.</h1>
+//       <p>
+//         Render your custom JSX by passing just a{' '}
+//         <code style={{ fontStyle: 'italic' }}>content</code> property inside
+//         your story object.
+//       </p>
+//       <p>
+//         You get a <code style={{ fontStyle: 'italic' }}>action</code> prop as an
+//         input to your content function, that can be used to play or pause the
+//         story.
+//       </p>
+//       <h1>{isPaused ? 'Paused' : 'Playing'}</h1>
+//     </div>
+//   );
+// };
 
 
 const StoryModalCTA = () => {
@@ -165,10 +142,9 @@ const StoryOverlay = ( { close }: { close: () => void } ) => {
         </p>
         <br />
       </div>
-      <div style={{ height: '300px' }}>300px space</div>
+      <div style={{ height: '100px' }}>100px space</div>
 
       <StoryModalCTA />
-
     </div>
 
     {/* Background overlay */}
@@ -200,7 +176,7 @@ const stories2 = [
       <StoryOverlay close={close} />
     ),
     // seeMoreCollapsed: () => ( <StoryModalCTA /> ),
-    duration: 3000,
+    duration: 100000,
   },
 
   {
@@ -242,15 +218,6 @@ const stories2 = [
       </div>
     ),
 
-  },
-
-  {
-    url: 'https://videos.pexels.com/video-files/20743387/20743387-uhd_1440_2560_30fps.mp4',
-    type: 'video',
-  },
-
-  {
-    content: Story2,
   },
 ];
 

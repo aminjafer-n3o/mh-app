@@ -28,7 +28,7 @@ const LoginWall: React.FC<LoginWallProps> = ({ children }) => {
 
         <>
             <div id="login-wall" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 2 }}>
-                <div className='shadow-xl rounded-xl bg' style={{ maxWidth: '400px', height: '560px', margin: 'auto', position: 'sticky', top: '20%', }}>
+                <div className='shadow-xl rounded-xl bg' style={{ maxWidth: '400px', height: 'fit-content', margin: 'auto', position: 'sticky', top: '20%', }}>
                     <LoginForm />
                 </div>
             </div>

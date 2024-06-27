@@ -10,6 +10,7 @@ import {
     IonListHeader,
     IonSkeletonText,
     IonThumbnail,
+    IonIcon,
 } from '@ionic/react';
 
 import StoriesCarousel from '../ui/StoriesCarousel';
@@ -19,6 +20,9 @@ import SignInModal from '../ui/SignInModal';
 import './../ui/Carousels.css';
 import { Space } from '../ui/Space';
 import LoginWall from '../ui/LoginWall';
+import Story from '../ui/Story';
+import LinkCard from '../ui/LinkCard';
+import { calculatorOutline } from 'ionicons/icons';
 
 const OPTIONS: EmblaOptionsType = { align: 'start', dragFree: true };
 
@@ -74,22 +78,45 @@ const HomeSegments: React.FC<{ selectedSegment: string; setSelectedSegment: (val
                                 </div>
                             </SignInModal>}
 
-                        {!isLoggedIn &&
-                            <SignInModal>
-                                <div style={{ textAlign: 'center', padding: 'var(--ion-padding)', background: 'var(--ion-item-background)', borderRadius: 'var(--ion-radius)' }}>
-                                    <IonItem>
-                                        <IonThumbnail slot="start">
-                                            <IonSkeletonText animated={true}></IonSkeletonText>
-                                        </IonThumbnail>
-                                        <IonLabel>
-                                            <h3>Use Our Zakat Calculator</h3>
-                                            <p>Helping you give your Zakat accurately and safely</p>
-                                        </IonLabel>
-                                    </IonItem>
-                                    <IonButton expand="block" color={'secondary'} style={{ borderRadius: '2em' }}>Calculate Zakat</IonButton>
+
+                        
+                        <Story />
+
+                        <LinkCard
+                            layoutVariant='small'
+                            title='Muslim Hands Micro Grants'
+                            description='Help us raise funds for our cause'
+                            imageUrl='https://muslimhands.org.uk/_ui/images/c6ea89cb1389.jpg'
+                            />
+                    
+                        <LinkCard
+                            layoutVariant='large'
+                            title='Great Charity Gifts'
+                            description='Give a charitable gift in the name of a loved one'
+                            imageUrl='https://muslimhands.org.uk/_ui/images/8a3aa823ab96.jpg'
+                            />
+                    
+                        <div className='ion-padding rounded shadow-xl flex flex-col gap' style={{ background: 'var(--ion-item-background)'}}>
+                            <div className='flex gap items-start'>
+                                <IonThumbnail slot="start" className='bg-tertiary ion-margin-top' style={{ height: 60, width: 60, padding: '2px 0' }}>
+                                    <IonIcon icon={calculatorOutline} style={{ height: 60, width: 60, opacity: 0.5 }} />
+                                </IonThumbnail>
+                                <div className='flex flex-col items-start ion-text-left'>
+                                    <h3 className='font-bold'>Use Our Zakat Calculator</h3>
+                                    <p>Helping you give your Zakat accurately and safely</p>
                                 </div>
-                            </SignInModal>}
-                        <br />
+                            </div>
+
+                            <IonButton expand='block' color={'secondary'}
+                                style={{
+                                    borderRadius: 'var(--ion-radius)',
+                                    // width: 220
+                                }}>
+                                Calculate Zakat
+                            </IonButton>
+                        </div>
+
+                        {/* <Space size='md' /> */}
                         <SkeletonList count={8} />
                     </div>
                 </div>

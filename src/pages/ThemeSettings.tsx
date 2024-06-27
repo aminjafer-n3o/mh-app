@@ -200,10 +200,12 @@ function ThemeSettings() {
                                 interface="popover"
                                 onIonChange={(e) => updateFontFamily(e.detail.value)}
                             >
-                                <IonSelectOption value="'Inter', sans-serif">Inter</IonSelectOption>
+                                <IonSelectOption value="system-ui, sans-serif">System Default</IonSelectOption>
                                 <IonSelectOption value="'Poppins', sans-serif">Poppins</IonSelectOption>
+                                <IonSelectOption value="'Plus Jakarta Sans', sans-serif">Plus Jakarta Sans</IonSelectOption>
+                                <IonSelectOption value="'Inter', sans-serif">Inter</IonSelectOption>
                                 <IonSelectOption value="'Signika', sans-serif">Signika</IonSelectOption>
-                                <IonSelectOption value="">System Default</IonSelectOption>
+                                <IonSelectOption value="'DM Sans', sans-serif">DM Sans</IonSelectOption>
                             </IonSelect>
                         </IonItem>
 

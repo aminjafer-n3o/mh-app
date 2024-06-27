@@ -3,11 +3,11 @@ import { EmblaOptionsType } from 'embla-carousel';
 import useEmblaCarousel from 'embla-carousel-react';
 
 import Stories from 'react-insta-stories';
-import './../pages/story.css';
+import './Story.css';
 
-import { IonContent, IonButton, IonModal, IonIcon, IonThumbnail, IonPopover, IonList, IonItem } from '@ionic/react';
+import { IonContent, IonButton, IonModal, IonIcon, IonThumbnail, IonPopover, IonList, IonItem, IonLabel } from '@ionic/react';
 
-import { archiveOutline, close, ellipsisHorizontal, playOutline } from 'ionicons/icons';
+import { archiveOutline, arrowForwardCircleOutline, arrowForwardOutline, close, ellipsisHorizontal, playOutline } from 'ionicons/icons';
 
 import './Carousels.css';
 
@@ -182,10 +182,13 @@ const StoryModalCTA = () => {
     return (
         <>
             <IonButton
-                style={{ margin: 'auto', marginTop: 100, maxWidth: 200 }}
-                className="ion-padding" id="cta-modal" expand="block">
-                Donate Now →
+                color={'tertiary'}
+                style={{ margin: 'auto', marginTop: 100, maxWidth: '100%' }}
+                className="font-bold ion-padding" id="cta-modal" expand="block">
+                <IonLabel slot='start'>Donate Today</IonLabel>
+                <IonIcon icon={arrowForwardCircleOutline} slot="end" />
             </IonButton>
+
             <IonModal
                 ref={modalCTA} trigger="cta-modal"
                 initialBreakpoint={0.8}
@@ -198,6 +201,7 @@ const StoryModalCTA = () => {
                     </p>
                 </IonContent>
                 <br />
+                
             </IonModal>
         </>
     );
@@ -237,6 +241,7 @@ const StoryOverlay = ({ close }: { close: () => void }) => {
                             Some Content. article or long captions.
                         </p>
                         <br />
+                        
                     </div>
                     <div style={{ height: '300px' }}>300px space</div>
 

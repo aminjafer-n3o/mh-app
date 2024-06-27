@@ -203,7 +203,7 @@ const ContentViewModal: React.FC<{ isOpen: boolean, onClose: () => void }> = ({ 
             </IonContent>
 
             <div className='ion-padding'>
-                <IonButton style={{ width: '100%' }} onClick={onClose}>CTA</IonButton>
+                <IonButton color={'tertiary'} style={{ width: '100%' }} onClick={onClose}>CTA</IonButton>
             </div>
             <br />
         </IonModal>
